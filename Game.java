@@ -34,7 +34,7 @@ public class Game
      */
     private void createRooms()
     {
-        Room fuera, puerta, parking, piso1, piso2 ,prensa, bathrooms;
+        Room fuera, puerta, parking, piso1, piso2 ,prensa, bathrooms,escaleras;
 
         // create the rooms
         fuera = new Room("outside the main entrance of the shopping-center");
@@ -44,15 +44,17 @@ public class Game
         piso2 = new Room("in second plant");
         bathrooms = new Room("this is the bathrooms");
         prensa = new Room("this buy news");
+        escaleras = new Room("this other output");
 
         // initialise room exits
-        fuera.setExits(null, null, null, puerta);
-        puerta.setExits(null, null, null, piso1);
-        piso1.setExits(piso2, puerta, null, bathrooms);
-        piso2.setExits(null, null, piso1, prensa);
-        bathrooms.setExits(prensa, piso1, parking, null);
-        parking.setExits(bathrooms, null, null, null);
-        prensa.setExits(null, piso2, bathrooms, null);
+        fuera.setExits(null, null, null, puerta, null);
+        puerta.setExits(null, fuera, null, piso1, null);
+        piso1.setExits(piso2, puerta, null, bathrooms, null);
+        piso2.setExits(null, null, piso1, prensa, null);
+        bathrooms.setExits(prensa, piso1, parking, null, null);
+        parking.setExits(bathrooms, null, null, null, escaleras);
+        prensa.setExits(null, piso2, bathrooms, null ,null);
+        escaleras.setExits(null,null,null,null,null);
 
         currentRoom = fuera;  // start game outside
     }
@@ -160,6 +162,9 @@ public class Game
         if(direction.equals("west")) {
             nextRoom = currentRoom.westExit;
         }
+        if(direction.equals("southEast")) {
+            nextRoom = currentRoom.southEastExit;
+        }
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
@@ -201,6 +206,9 @@ public class Game
         }
         if(currentRoom.westExit != null) {
             System.out.print("west ");
+        }
+        if(currentRoom.southEastExit != null) {
+            System.out.print("southEast ");
         }
         System.out.println();
     }
