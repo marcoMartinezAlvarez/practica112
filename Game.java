@@ -47,14 +47,14 @@ public class Game
         escaleras = new Room("this other output");
 
         // initialise room exits
-        fuera.setExits(null, null, null, puerta, null);
-        puerta.setExits(null, fuera, null, piso1, null);
-        piso1.setExits(piso2, puerta, null, bathrooms, null);
-        piso2.setExits(null, null, piso1, prensa, null);
-        bathrooms.setExits(prensa, piso1, parking, null, null);
-        parking.setExits(bathrooms, null, null, null, escaleras);
-        prensa.setExits(null, piso2, bathrooms, null ,null);
-        escaleras.setExits(null,null,null,null,null);
+        fuera.setExits(null, null, null, puerta, null,null);
+        puerta.setExits(null, fuera, null, piso1, null,null);
+        piso1.setExits(piso2, puerta, null, bathrooms, null,null);
+        piso2.setExits(null, null, piso1, prensa, null,null);
+        bathrooms.setExits(prensa, piso1, parking, null, null,null);
+        parking.setExits(bathrooms, null, null, null, escaleras,null);
+        prensa.setExits(null, piso2, bathrooms, null ,null,null);
+        escaleras.setExits(null,null,null,null,null,parking);
 
         currentRoom = fuera;  // start game outside
     }
@@ -114,7 +114,6 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
-
         return wantToQuit;
     }
 
@@ -149,10 +148,8 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        
+
         Room nextRoom = currentRoom.getExit(direction);
-
-
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
