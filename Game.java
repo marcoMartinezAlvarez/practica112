@@ -48,14 +48,30 @@ public class Game
         escaleras = new Room("this other output");
 
         // initialise room exits
-        fuera.setExits(null, null, null, puerta, null,null);
-        puerta.setExits(null, fuera, null, piso1, null,null);
-        piso1.setExits(piso2, puerta, null, bathrooms, null,null);
-        piso2.setExits(null, null, piso1, prensa, null,null);
-        bathrooms.setExits(prensa, piso1, parking, null, null,null);
-        parking.setExits(bathrooms, null, null, null, escaleras,null);
-        prensa.setExits(null, piso2, bathrooms, null ,null,null);
-        escaleras.setExits(null,null,null,null,null,parking);
+        fuera.setExit("west",puerta);
+        
+        puerta.setExit("west",piso1);
+        puerta.setExit("east",fuera);
+        
+        piso1.setExit("west",bathrooms);
+        piso1.setExit("north",piso2);
+        piso1.setExit("east",puerta);
+        
+        piso2.setExit("west",prensa);
+        piso2.setExit("south",piso1);
+        
+        bathrooms.setExit("east",piso1);
+        bathrooms.setExit("north",prensa);
+        bathrooms.setExit("south",parking);
+          
+        parking.setExit("north",bathrooms);
+        parking.setExit("north",bathrooms);
+        parking.setExit("southEast",escaleras);
+        
+        prensa.setExit("east",piso2);
+        prensa.setExit("south",bathrooms);
+         
+        escaleras.setExit("northWest",parking);
 
         currentRoom = fuera;  // start game outside
     }
