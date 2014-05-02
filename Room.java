@@ -52,26 +52,7 @@ public class Room
 
     public Room getExit(String direction)
     {
-        Room room = null;
-        if(direction.equals( "north")){
-            room = direcion.get("north");
-        }
-        if(direction.equals( "south")){
-            room = direcion.get("south");
-        }
-        if(direction.equals( "east")){
-            room = direcion.get("east");
-        }
-        if(direction.equals( "west")){
-            room = direcion.get("west");
-        } 
-        if(direction.equals( "southEast")){
-            room = direcion.get("southEast");
-        } 
-        if(direction.equals("northWest")){
-            room = direcion.get("northWest");
-        }
-        return room;
+      return direcion.get(direction);
     }
 
     /**
