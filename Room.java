@@ -36,8 +36,8 @@ public class Room
      * @param direction The direction of the exit.
      * @param neighbor The room in the given direction.
      */
-    public void setExit(String direction, Room nextRoom){
-
+    public void setExit(String direction, Room nextRoom)
+    {
         direcion.put(direction, nextRoom);
 
     }
@@ -89,5 +89,18 @@ public class Room
         }
         return exitsDescription;
 
+    }
+
+    /**
+     * Return a long description of this room, of the form:
+     *     You are in the 'name of room'
+     *     Exits: north west southwest
+     * @return A description of the room, including exits.
+     */
+    public String getLongDescription()
+    {
+    
+        return "Tu estás en: "+ getDescription() + "\n" + getExitString();
+    
     }
 }
