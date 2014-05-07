@@ -38,14 +38,14 @@ public class Game
         Room fuera, puerta, parking, piso1, piso2 ,prensa, bathrooms,escaleras;
 
         // create the rooms
-        fuera = new Room("outside the main entrance of the shopping-center");
-        puerta = new Room("door of shopping");
-        parking = new Room("in the parking of shopping");
-        piso1 = new Room("in first plant");
-        piso2 = new Room("in second plant");
-        bathrooms = new Room("this is the bathrooms");
-        prensa = new Room("this buy news");
-        escaleras = new Room("this other output");
+        fuera = new Room("outside the main entrance of the shopping-center","banco",35.5F);
+        puerta = new Room("door of shopping","papelera",2.5F);
+        parking = new Room("in the parking of shopping","moto",100.8F);
+        piso1 = new Room("in first plant","tienda",300.5F);
+        piso2 = new Room("in second plant","papeleria",321.2F);
+        bathrooms = new Room("this is the bathrooms","secador",35.0F);
+        prensa = new Room("this buy news","periodico",1.0F);
+        escaleras = new Room("this other output","extintor",8.2F);
 
         // initialise room exits
         fuera.setExit("west",puerta);
@@ -201,7 +201,7 @@ public class Game
     private void printLocationInfo()
     {
         System.out.println(currentRoom.getLongDescription());
-        System.out.println();
+       
     }
 
     private void look()
