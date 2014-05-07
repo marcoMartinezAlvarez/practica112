@@ -49,28 +49,28 @@ public class Game
 
         // initialise room exits
         fuera.setExit("west",puerta);
-        
+
         puerta.setExit("west",piso1);
         puerta.setExit("east",fuera);
-        
+
         piso1.setExit("west",bathrooms);
         piso1.setExit("north",piso2);
         piso1.setExit("east",puerta);
-        
+
         piso2.setExit("west",prensa);
         piso2.setExit("south",piso1);
-        
+
         bathrooms.setExit("east",piso1);
         bathrooms.setExit("north",prensa);
         bathrooms.setExit("south",parking);
-          
+
         parking.setExit("north",bathrooms);
         parking.setExit("north",bathrooms);
         parking.setExit("southEast",escaleras);
-        
+
         prensa.setExit("east",piso2);
         prensa.setExit("south",bathrooms);
-         
+
         escaleras.setExit("northWest",parking);
 
         currentRoom = fuera;  // start game outside
@@ -132,9 +132,11 @@ public class Game
             wantToQuit = quit(command);
         }
         else if (commandWord.equals("look")){
-           printLocationInfo();
+            look();
         }
-        
+        else if (commandWord.equals("eat")){
+            eat();
+        }
         return wantToQuit;
     }
 
@@ -201,6 +203,16 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
         System.out.println();
     }
-    
+
+    private void look()
+    {
+        printLocationInfo();
+    }
+
+    private void eat()
+    {
+        System.out.println("You have eaten now and you are not hungry any more");
+    }
+
 }
 
