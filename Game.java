@@ -82,10 +82,8 @@ public class Game
     public void play() 
     {            
         printWelcome();
-
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -201,7 +199,7 @@ public class Game
     private void printLocationInfo()
     {
         System.out.println(currentRoom.getLongDescription());
-       
+
     }
 
     private void look()
